@@ -4,6 +4,11 @@ import Admin from '../components/Admin'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import About from '../components/about/About';
+import Contact from '../components/about/Contact';
+import Delivery from '../components/about/Delivery';
+import History from '../components/about/History';
+import OrderingGuide from '../components/about/OrderingGuide';
+
 
 export const routes = [{
     path: '/',
@@ -27,7 +32,30 @@ export const routes = [{
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    redirect: '/contact',
+    children: [
+      {
+        path: '/contact',
+        name: "contactLink",
+        component: Contact
+      },
+      {
+        path: '/delivery',
+        name: "deliveryLink",
+        component: Delivery
+      },
+      {
+        path: '/history',
+        name: "historyLink",
+        component: History
+      },
+      {
+        path: '/orderingGuide',
+        name: "orderingGuideLink",
+        component: OrderingGuide
+      }
+    ]
   },
   {
     path: '*',
