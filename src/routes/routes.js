@@ -12,7 +12,12 @@ import OrderingGuide from '../components/about/OrderingGuide';
 
 export const routes = [{
     path: '/',
-    component: Home
+    components: {
+      default: Home,
+      "orderingGuide": OrderingGuide,
+      "delivery": Delivery,
+      "history" : History
+    }
   },
   {
     path: '/menu',
