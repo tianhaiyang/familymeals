@@ -4,9 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import {routes} from './routes/routes';
+import axios from 'axios';
+
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+
+axios.defaults.baseURL = "https://wd1991145099otodfz.wilddogio.com/"
 
 const router = new VueRouter({
   routes,
