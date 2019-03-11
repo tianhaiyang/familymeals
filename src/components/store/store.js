@@ -6,10 +6,16 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     // 设置属性
-    menuItems:{}
+    menuItems:{},
+    currentUser: null,
+    isLogin: false
   },
   getters: {
     // 获取属性的状态
+    getMenuItems: state => state.menuItems,
+    currentUser: state => state.currentUser,
+    isLogin: state => state.isLogin,
+
   },
   mutations:{
     // 改变属性的状态
