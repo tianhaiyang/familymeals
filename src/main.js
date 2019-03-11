@@ -5,6 +5,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import {routes} from './routes/routes';
 import axios from 'axios';
+import {store} from './components/store/store.js'
 
 Vue.config.productionTip = false
 
@@ -38,6 +39,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
