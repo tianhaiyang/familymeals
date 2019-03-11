@@ -36,8 +36,10 @@ export default {
   },
   data() {
     return {
-      name: "Henry"
+      newPizza: {}
     }
+  },
+  mdthods: {
   }
 }
 </script>

@@ -40,7 +40,7 @@
        </div>
      </div>
      <div class="form-group row">
-       <button type = "button" class="btn btn-success btn-block">添加</button>
+       <button @click="addMenuItem" type = "button" class="btn btn-success btn-block">添加</button>
      </div>
   </form>
 </template>
@@ -51,6 +51,43 @@ export default {
     return {
       newPizza: {}
     }
-  }
+  },
+  methods: {
+
+    addMenuItem() {
+      let data = {
+        name: this.newPizza.name,
+        description: this.newPizza.description,
+        options: [
+          {
+            size: this.newPizza.size1,
+            price: this.newPizza.price1,
+          },
+          {
+            size: this.newPizza.size2,
+            price: this.newPizza.price2,
+          }
+        ]
+      }
+
+
+      fetch('https://wd1991145099otodfz.wilddogio.com/menu.json', {
+        method: "POST",
+        headers: {
+          "Content-type" : "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          this.$router.push('/menu')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
 }
 </script>
