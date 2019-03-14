@@ -14,8 +14,10 @@
 
       <ul class="navbar-nav ml-auto">
         <li><router-link to="login" class="nav-link" v-show="!isLogin" exact>登录</router-link></li>
+
         <li class="nav-link" v-show="isLogin">{{currentUser}}</li>
-        <li><router-link to="login" class="nav-link" v-show="isLogin" exact><a class="nav-link">[退出]</a></router-link></li>
+        <li><router-link to="login" class="nav-link" v-show="isLogin" exact>[退出]</router-link></li>
+        
         <li><router-link to="register" class="nav-link" v-show="!isLogin" exact>注册</router-link></li>
       </ul>
     </nav>
@@ -39,10 +41,4 @@
     }
   }
 </script>
-
-</script>
-
-<style scope>
-
-</style>
 

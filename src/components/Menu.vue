@@ -65,7 +65,7 @@ export default {
   },
   computed:{
     getMenuItems() {
-      return this.$store.state.menuItems
+      return this.$store.getters.getMenuItems
     },
     total(){
       let totalCost = 0;
@@ -85,9 +85,8 @@ export default {
       .then(res => {
         return res.json()
       })
-      .then(data => {
-        // this.getMenuItems = data
-        this.$store.commit("setMenuItems",data)
+      .then(reponse => {
+        this.$store.commit("setMenuItems",reponse)
       })
       .catch(err => console.log(err))
 

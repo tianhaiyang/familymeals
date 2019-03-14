@@ -23,7 +23,7 @@
                         class="form-control"
                         v-model="confirmPassword">
               </div>
-            <button type="submit" class="btn btn-block btn-success">注册</button>
+            <button @click = "onSubmit" type="submit" class="btn btn-block btn-success">注册</button>
           </form>
         </div>
       </div>

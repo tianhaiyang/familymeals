@@ -81,8 +81,9 @@ export default {
         .then(res => {
           return res.json()
         })
-        .then(data => {
+        .then(reponse => {
           // this.$router.push('/menu')
+          console.log(reponse)
           this.$store.commit('pushMenuItems',data)
         })
         .catch(err => {

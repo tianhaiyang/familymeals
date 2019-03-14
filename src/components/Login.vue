@@ -17,7 +17,7 @@
                         class="form-control"
                         v-model="password">
               </div>
-            <button type="submit" class="btn btn-block btn-success">登录</button>
+            <button @click = "onSubmit" type="submit" class="btn btn-block btn-success">登录</button>
           </form>
         </div>
       </div>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -33,9 +35,36 @@ export default {
       password: "",
     }
   },
+  beforeRouteEnter:(to, from, next) => {
+    // this.$store.dispatch("setUser",null)
+    next(vm => {
+      vm.$store.dispatch("setUser",null)
+    })
+  },
   methods: {
     onSubmit() {
+      axios.get('/users.json')
+        .then(res => {
+          const data = res.data
+          const users = []
+          for(let key in data) {
+            const user = data[key]
+            users.push(user)
+          }
 
+          let result = users.filter((user) => {
+            return user.email === this.email && user.password === this.password
+          })
+
+          if(result != null && result.length > 0) {
+            console.log('aaa=' + result[0].email)
+            this.$store.dispatch("setUser",result[0].email)
+            this.$router.push("/home")
+          }else {
+            alert("账号或密码错误!")
+            this.$store.dispatch("setUser",null)
+          }
+        })
     }
 
   }
